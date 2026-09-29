@@ -1,0 +1,21 @@
+{
+  "name": "http-api-assignment-ii",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/ParvelSel/http-api-assignment-ii#readme",
+  "bugs": {
+    "url": "https://github.com/ParvelSel/http-api-assignment-ii/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParvelSel/http-api-assignment-ii.git"
+  },
+  "license": "ISC",
+  "author": "Parvel",
+  "type": "commonjs",
+  "main": "eslint.config.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "test": "echo \"Error: no test specified\""
+  }
+}

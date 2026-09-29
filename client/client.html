@@ -5,7 +5,49 @@
   <link rel="stylesheet" type="text/css" href="/style.css">
   
   <script>
+    const sendGetRequest = async (page) => {
+      const response = await fetch(page, {
+        method: 'GET',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json' 
+        },
+      });
+      handleGetResponse(response);
+    };
+    const sendPostRequest = async (page, name, age) => {
+      const response = await fetch(page, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+         },
+        body: JSON.stringify({ name: name, age: age })
+      });
+      handlePostResponse(response);
+    };
 
+    const handlePostResponse = (response) => {
+      const content = document.querySelector('#content');
+      content.innerHTML = `<h1>${response.id}: ${response.message}</h1>`;
+    };
+    const handleGetResponse = (response) => {
+      const content = document.querySelector('#content');
+      content.innerHTML = `<h1>${response.id}: ${response.message}</h1>`;
+    };
+
+    const init = () => {
+      const nameText = document.querySelector('#nameField');
+      const ageText = document.querySelector('#ageField');
+      const post = () => sendPostRequest('/addUser', nameText.value, ageText.value);
+      document.querySelector('#Add User').addEventListener('click', post);
+      
+      const page = document.querySelector('#page');
+      const type = document.querySelector('#type');
+      const get = () => sendGetRequest(page.value);
+      document.querySelector('#Get User').addEventListener('click', get);
+      sendGetRequest('/getUsers');
+    };
   </script>
 </head>
 <body>
